@@ -19,7 +19,7 @@
       if($count == 1) {
          $_SESSION['login_user'] = $user_name;
          
-         header("location: welcome.php");
+         header("location: telaat.php");
       }else {
          $error = "Uw gebruikersnaam of wachtwoord is fout.";
       }

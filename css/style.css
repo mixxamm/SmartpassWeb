@@ -5,6 +5,9 @@ body {
 	font-weight: 300;
 	margin: 0;
 	color: #666;
+	position: fixed; 
+    overflow-y: scroll;
+    width: 100%;
 }
 
 /* Typography */
@@ -24,6 +27,21 @@ h1#title {
 
 h1#title span span {
 	font-weight: 400;
+}
+
+/* Typography */
+h1#test {
+	font-family: 'Roboto Slab', serif;
+	font-weight: 300;
+	font-size: 1.2em;
+	color: white;
+	text-shadow: 0 0 10px rgba(0,0,0,0.8);
+	margin: 0 auto;
+	padding-top: 180px;
+	max-width: 300px;
+	text-align: center;
+	position: relative;
+	top: 0px;
 }
 
 h2 {
@@ -139,7 +157,30 @@ p.small {
 #button {
 	background-color:#455A64;
 	color:white;
+	margin-top: 0px;
+	border: 0;
+	border-radius: 2px;
+	color: white;
+	padding: 10px;
+	text-transform: uppercase;
+	font-weight: 400;
+	font-size: 0.7em;
+	letter-spacing: 1px;
+	cursor:pointer;
+	outline: none;
 }
+
+#button:hover {
+	opacity: 0.7;
+	transition: 0.5s;
+}
+
+#button:hover {
+	opacity: 0.7;
+	transition: 0.5s;
+}
+
+
 
 }
 
