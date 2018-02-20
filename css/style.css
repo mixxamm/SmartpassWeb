@@ -1,0 +1,22 @@
+div.container {
+	margin:0 auto;
+    display:block;
+position:relative;
+top:10px;
+width: 450px;
+}
+
+h2 {
+text-align: center;
+color: #607D8B;
+}
+
+#loginknop {
+	margin:0 auto;
+    display:block;
+position:relative;
+top:10px;
+}
+body {
+	text-align: center;
+}
