@@ -1,8 +1,11 @@
-<!DOCTYPE html>
+<?php include ("login.php"); ?>
+
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Smartpass</title>
+	<title>Smartpass | Leerkracht</title>
+        <meta name="theme-color" content="#ECEFF1" />
+        <meta name="viewport" content="width=device-width, initial-scale=0.8">
 
 	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-pink.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -14,17 +17,17 @@
 <div class="container">
 <img src="images/Smartpass.png">
 				<h2>Leerkracht</h2>
-			<form id="login" action="login.php" method="POST">
+			<form id="login" action="" method="POST">
 			<div id="gebruikersnaam" class="mdl-textfield mdl-js-textfield">
 			<input name="gebruikersnaam" class="mdl-textfield__input" type="text">
 			<label class="mdl-textfield__label">Gebruikersnaam</label>
 			</div>
 			<div id="wachtwoord" class="mdl-textfield mdl-js-textfield">
-			<input class="mdl-textfield__input" type="password">
-			<label name="wachtwoord" class="mdl-textfield__label">Wachtwoord</label>
+			<input name="wachtwoord" class="mdl-textfield__input" type="password">
+			<label class="mdl-textfield__label">Wachtwoord</label>
 			</div>
 			
-			<input id="loginknop" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="button" type="submit" name="submit" value="Log In">
+			<input id="loginknop" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="submit" name="submit" value="Log In">
 			</form>
 			
 			<div><?php echo $error; ?></div>
