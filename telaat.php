@@ -23,14 +23,14 @@ if(mysqli_num_rows($result) > 0){
 }
 if(date('l') == "Monday"){
     $datumnaarbuiten = date('Y-m-d', strtotime('+4 days'));
-    $data = "$Naam mag niet naar buiten tot $datumnaarbuiten";
+    $data = "$naam mag niet naar buiten tot $datumnaarbuiten";
 }
 elseif(date('l') == "Tuesday"){
     $datumnaarbuiten = date('Y-m-d', strtotime('+5 days'));
-    $data = "$Naam mag niet naar buiten tot $datumnaarbuiten";
+    $data = "$naam mag niet naar buiten tot $datumnaarbuiten";
 }
 elseif(date('l') == "Wednesday"){
-    $data = "Leerling niet te laat gezet, het is woensdag";
+    $data = "$naam niet te laat gezet, het is woensdag";
 }
 elseif(date('l') == "Thursday"){
     $datumnaarbuiten  = date('Y-m-d', strtotime('+5 days'));
@@ -57,11 +57,17 @@ $db->close();
 	<meta charset="utf-8">
 	<title>Smartpass</title>
 	 <meta name="theme-color" content="#ECEFF1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-pink.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link rel="stylesheet" href="css/style.css">
         <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+        
+        <!-- mdl select -->
+        <link rel="stylesheet" href="getmdl-select/getmdl-select.min.css">
+<script defer src="getmdl-select/getmdl-select.min.js"></script>
+
 </head>
 
 <body scroll="no" style="overflow: hidden">
@@ -71,6 +77,7 @@ $db->close();
 				<h2>Leerling te laat</h2>
 			</div>
 <h1>Selecteer een klas <br></h1>
+
 <td style="text-align: center; height: 60px">
 <form action="" method = "POST"><select style="text-align:center;" id="klassen" name="klas">
 <option value="1" <?php if($_POST['klas']=='1') echo 'selected="selected"'; $button = '<td style="text-align: center; height: 60px"><input id="button"class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" name="submit" type="submit" value="Bevestig"/></form></td>'; ?> >5ABK</option>
@@ -108,7 +115,7 @@ $db->close();
 <option value="33" <?php if($_POST['klas']=='33') echo 'selected="selected"'; $button = '<td style="text-align: center; height: 60px"><input id="button"class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" name="submit" type="submit" value="Bevestig"/></form></td>'; ?> >6OF2</option>
 <option value="34" <?php if($_POST['klas']=='34') echo 'selected="selected"'; $button = '<td style="text-align: center; height: 60px"><input id="button"class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" name="submit" type="submit" value="Bevestig"/></form></td>'; ?> >6OR1</option>
 <option value="35" <?php if($_POST['klas']=='35') echo 'selected="selected"'; $button = '<td style="text-align: center; height: 60px"><input id="button"class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" name="submit" type="submit" value="Bevestig"/></form></td>'; ?> >6OR2</option>
-<option value="36" <?php if($_POST['klas']=='36') echo 'selected="selected"'; $button = '<td style="text-align: center; height: 60px"><input id="button"class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" name="submit" type="submit" value="Bevestig"/></form></td>'; ?> >6PU1</option>
+<option value="36" <?php if($_POST['klas']=='36') echo 'selected="selected"'; $button = '<td style="text-align: center; height: 60px-"><input id="button"class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" name="submit" type="submit" value="Bevestig"/></form></td>'; ?> >6PU1</option>
 <option value="37" <?php if($_POST['klas']=='37') echo 'selected="selected"'; $button = '<td style="text-align: center; height: 60px"><input id="button"class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" name="submit" type="submit" value="Bevestig"/></form></td>'; ?> >6PU2</option>
 <option value="38" <?php if($_POST['klas']=='38') echo 'selected="selected"'; $button = '<td style="text-align: center; height: 60px"><input id="button"class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" name="submit" type="submit" value="Bevestig"/></form></td>'; ?> >6RE</option>
 <option value="39" <?php if($_POST['klas']=='39') echo 'selected="selected"'; $button = '<td style="text-align: center; height: 60px"><input id="button"class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" name="submit" type="submit" value="Bevestig"/></form></td>'; ?> >6RK</option>
@@ -122,7 +129,8 @@ $db->close();
 <option value="47" <?php if($_POST['klas']=='47') echo 'selected="selected"'; $button = '<td style="text-align: center; height: 60px"><input id="button"class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" name="submit" type="submit" value="Bevestig"/></form></td>'; ?> >7SA</option>
 <option value="48" <?php if($_POST['klas']=='48') echo 'selected="selected"'; $button = '<td style="text-align: center; height: 60px"><input id="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" name="submit" type="submit" value="Bevestig"/></form></td>'; ?> >7WG</option>
 </select>
-<td style="text-align: center; height: 60px"><input id="button" name="submit" type="submit" value="Bevestig" />
+<td style="text-align: center; height: 60px">
+    <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="button" name="submit" type="submit" value="Bevestig" />
  </form>
 <h1 style="text-align: center; height: 60px">Selecteer een leerling</h1>
 <form action="" method="POST"><?php
@@ -145,9 +153,10 @@ while ($row = $result->fetch_assoc());
 echo '</select>';
 }
 ?>
-<?php echo $button; ?>
+<td style="text-align: center; height: 60px"><input id="button"class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" name="submit" type="submit" value="Bevestig"/></form></td>
 <p style="text-align:center;"> <?php echo $data; ?> </p>
 <p style="text-align:center;"><a href = "logout.php">Log uit</a></p>
+<p style="text-align:center;"><a href = "leerlingen.php">Te late leerlingen bekijken</a></p>
 		</div>
 	</div>
 	
