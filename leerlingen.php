@@ -47,11 +47,15 @@
 						
 						
 						$result = mysqli_query($db,$mysql_query);
+						
 						if (mysqli_num_rows($result) > 0) {
 							while($row = mysqli_fetch_assoc($result)) {
+								$id = $row['LeerlingID'];
+								$mysql_query1 = "select Naam from tblleerlingen where LeerlingID='$id';";
+								$naam = mysqli_query($mysql_query1);
 								echo '<div class="row">';
 								echo '<div class="cell" data-title="Naam">';
-								echo $row['LeerlingID'];
+								echo $mysql_query1;
 								echo '</div>';
 								echo '<div class="cell" data-title="Datum te laat">';
 								echo $row['Datum_te_laat'];
