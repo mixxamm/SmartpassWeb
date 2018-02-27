@@ -32,6 +32,9 @@
 							<div class="cell">
 								Naam
 							</div>
+							<div class ="cell">
+							    Klas
+							</div>
 							<div class="cell">
 								Datum te laat
 							</div>
@@ -51,12 +54,19 @@
 						if (mysqli_num_rows($result) > 0) {
 							while($row = mysqli_fetch_assoc($result)) {
 								$id = $row['LeerlingID'];
-								$mysql_query1 = "select Naam from tblleerlingen where LeerlingID='$id';";
+								$mysql_query1 = "select Naam,Klas from tblleerlingen where LeerlingID='$id';";
 								$resultnaam = mysqli_query($db,$mysql_query1);
 								$row2 = mysqli_fetch_assoc($resultnaam);
+								$klasnr = $row2['Klas'];
+								$mysql_query2 = "SELECT Klas from tblklassen WHERE KlasNr = '$klasnr';";
+								$resultklas = mysqli_query($db,$mysql_query2);
+								$row3 = mysqli_fetch_assoc($resultklas);
 								echo '<div class="row">';
 								echo '<div class="cell" data-title="Naam">';
 								echo $row2['Naam'];
+								echo '</div>';
+								echo '<div class="cell" data-title="Klas">';
+								echo $row3['Klas'];
 								echo '</div>';
 								echo '<div class="cell" data-title="Datum te laat">';
 								echo $row['Datum_te_laat'];
