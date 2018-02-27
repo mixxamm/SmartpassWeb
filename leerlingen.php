@@ -52,10 +52,11 @@
 							while($row = mysqli_fetch_assoc($result)) {
 								$id = $row['LeerlingID'];
 								$mysql_query1 = "select Naam from tblleerlingen where LeerlingID='$id';";
-								$naam = mysqli_query($mysql_query1);
+								$resultnaam = mysqli_query($db,$mysql_query1);
+								$row2 = mysqli_fetch_assoc($resultnaam);
 								echo '<div class="row">';
 								echo '<div class="cell" data-title="Naam">';
-								echo $mysql_query1;
+								echo $row2['Naam'];
 								echo '</div>';
 								echo '<div class="cell" data-title="Datum te laat">';
 								echo $row['Datum_te_laat'];
