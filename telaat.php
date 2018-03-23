@@ -2,14 +2,15 @@
 include("connect.php");
 require "session.php";
 session_start();
+$user_name = $_SESSION['login_user'];
+$user_pass = $_SESSION['pass_user'];
 $mysql_query = "SELECT * FROM tblleerkrachten WHERE Naam like '$user_name';";
       $result = mysqli_query($db,$mysql_query);
       $row = mysqli_fetch_assoc($result);
       $hash = $row['Wachtwoord'];
-$user_name = $_SESSION['login_user'];
-$user_pass = $_SESSION['pass_user'];
+      $id = mysqli_real_escape_string($db, $_POST["leerling"]);
 if(password_verify($user_pass, $hash)) {
-$id = mysqli_real_escape_string($_POST["leerling"]);
+
 if($id > 0){
    $datum = date("Y-m-d");
 $mysql_qry = "select * from tblleerlingen where LeerlingID like $id;";
