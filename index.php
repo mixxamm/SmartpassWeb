@@ -12,8 +12,8 @@
 		<link rel="stylesheet" href="css/style.css">
         <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </head>
-
 <body>
+
 <div class="container">
 <img src="images/Smartpass.png">
 				<h2>Leerkracht</h2>

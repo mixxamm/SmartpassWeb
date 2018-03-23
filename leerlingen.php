@@ -80,9 +80,14 @@
 						?>
 
 					</div>
+					
 			</div>
+			
+			
+			
 		</div>
 	</div>
+<a id="terug" href = "terug.php">Ga terug</a>
 
 
 	

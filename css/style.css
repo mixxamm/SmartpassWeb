@@ -28,3 +28,9 @@ top:10px;
 body {
 	text-align: center;
 }
+
+ .topcorner{
+   position:absolute;
+   top:0;
+   right:0;
+  }
