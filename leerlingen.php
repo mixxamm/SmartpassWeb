@@ -19,15 +19,18 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-pink.min.css">
 <!--===============================================================================================-->
 </head>
 <body>
-	
+
 	<div class="limiter">
 		<div class="container-table100">
 			<div class="wrap-table100">
+			    <form id="verwijderen" action="verwijder.php" method="POST">
+			    		<a href="gototelaat.php" id="goback" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Ga terug</a>
+                        <input style="float-right;" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="Verwijderen">
 					<div class="table">
-
 						<div class="row header">
 							<div class="cell">
 								Naam
@@ -40,6 +43,9 @@
 							</div>
 							<div class="cell">
 								Datum naar buiten
+							</div>
+							<div class="cell">
+								Aanvinken
 							</div>
 						</div>
 
@@ -74,6 +80,9 @@
 								echo '<div class="cell" data-title="Datum naar buiten">';
 								echo $row['Datum_naar_buiten'];
 								echo '</div>';
+								echo '<div class="cell" data-title="Aanvinken">';
+								echo '<input type="checkbox" name="check_list[]" value="'. $row['LeerlingID']. '">';
+							    echo '</div>';
 								echo '</div>';
 							}
 						}
@@ -87,7 +96,7 @@
 			
 		</div>
 	</div>
-<a id="terug" href = "terug.php">Ga terug</a>
+	</form>
 
 
 	

@@ -18,11 +18,11 @@
 <img src="images/Smartpass.png">
 				<h2>Leerkracht</h2>
 			<form id="login" action="" method="POST">
-			<div id="gebruikersnaam" class="mdl-textfield mdl-js-textfield">
+			<div id="gebruikersnaam" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 			<input name="gebruikersnaam" class="mdl-textfield__input" type="text">
 			<label class="mdl-textfield__label">Gebruikersnaam</label>
 			</div>
-			<div id="wachtwoord" class="mdl-textfield mdl-js-textfield">
+			<div id="wachtwoord" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 			<input name="wachtwoord" class="mdl-textfield__input" type="password">
 			<label class="mdl-textfield__label">Wachtwoord</label>
 			</div>

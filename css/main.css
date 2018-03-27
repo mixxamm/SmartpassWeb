@@ -199,6 +199,8 @@ iframe {
 
   padding-top: 19px;
   padding-bottom: 19px;
+  padding-left: 3px;
+padding-right: 25px;
 }
 
 .row .cell:nth-child(1) {
@@ -217,7 +219,6 @@ iframe {
 .row .cell:nth-child(4) {
   width: 190px;
 }
-
 
 .table, .row {
   width: 100% !important;

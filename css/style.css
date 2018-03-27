@@ -24,6 +24,10 @@ position:relative;
 top:10px;
 }
 
+#goback
+{
+    color:#000000;
+}
 
 body {
 	text-align: center;

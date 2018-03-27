@@ -34,5 +34,6 @@ $user_name = $_SESSION['login_user'];
 			<p><?php echo $error, $gelukt, $nietgelukt, $passnm; ?></p>
 			</form>
 			</div>
+			<a href="gototelaat.php" id="goback" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Ga terug</a>
     </body>
 </html>
