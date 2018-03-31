@@ -51,10 +51,8 @@
 
 						<?php
 						include("connect.php");
-						
-						$mysql_query = "select * from tbltelaat;";
-						
-						
+						$datum = date("Y-m-d");
+						$mysql_query = "select * from tbltelaat where Datum_naar_buiten > '$datum';";
 						$result = mysqli_query($db,$mysql_query);
 						
 						if (mysqli_num_rows($result) > 0) {

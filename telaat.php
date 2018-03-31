@@ -10,7 +10,6 @@ $mysql_query = "SELECT * FROM tblleerkrachten WHERE Naam like '$user_name';";
       $hash = $row['Wachtwoord'];
       $id = mysqli_real_escape_string($db, $_POST["leerling"]);
 if(password_verify($user_pass, $hash)) {
-
 if($id > 0){
    $datum = date("Y-m-d");
 $mysql_qry = "select * from tblleerlingen where LeerlingID like $id;";
@@ -77,7 +76,6 @@ $db->close();
 </head>
 
 <body scroll="no" style="overflow: hidden">
-    <div class="topcorner"><p>Ingelogd als <?php echo $user_name; ?></p></div>
 	<div class="container">
 		<div class="login-box animated fadeInUp">
 			<div class="box-header">
@@ -89,13 +87,10 @@ $db->close();
 <form action="" method = "POST">
 <?php
 include("connect.php");
-
 $mysql_queryklas = "select * from tblklassen;";
 $resultklas = mysqli_query($db,$mysql_queryklas);
 $rowklas = mysqli_fetch_array($resultklas,MYSQLI_ASSOC);
-
 echo '<select style="text-align:center;" id="klassen" name="klas">';
-
 do {
 echo '<option value="'.$rowklas['KlasNr']. '">'.$rowklas['Klas'].'</option>';
 }
@@ -109,7 +104,6 @@ echo '</select>';
 <h1 style="text-align: center; height: 60px">Selecteer een leerling</h1>
 <form action="" method="POST"><?php
 include("connect.php");
-
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 	
 	$klasnr = $_POST['klas'];
@@ -137,5 +131,4 @@ echo '</select>';
 	
 </body>
 </html>
-
 
