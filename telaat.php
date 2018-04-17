@@ -125,6 +125,7 @@ echo '</select>';
 <p style="text-align:center;"> <?php echo $data; ?> </p>
 <p style="text-align:center;"><a href = "logout.php">Log uit</a></p>
 <p style="text-align:center;"><a href = "leerlingen.php">Te late leerlingen bekijken</a></p>
+<p style="text-align:center;"><a href="leerlingenkaart.html"></a>Studentenkaart afdrukken</p>
 <p style="text-align:center;"><a href = "wachtwoord.php">Wachtwoord veranderen</a></p>
 		</div>
 	</div>

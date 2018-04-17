@@ -15,7 +15,7 @@
 <body>
 
 <div class="container">
-<img src="images/Smartpass.png">
+<img id="logo" src="images/Smartpass.png">
 				<h2>Leerkracht</h2>
 			<form id="login" action="" method="POST">
 			<div id="gebruikersnaam" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
