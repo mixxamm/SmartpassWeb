@@ -1,64 +1,17 @@
 <?php
 include("connect.php");
-require "session.php";
 session_start();
-$user_name = $_SESSION['login_user'];
-$user_pass = $_SESSION['pass_user'];
-$mysql_query = "SELECT * FROM tblleerkrachten WHERE Naam like '$user_name';";
-      $result = mysqli_query($db,$mysql_query);
-      $row = mysqli_fetch_assoc($result);
-      $hash = $row['Wachtwoord'];
-      $id = mysqli_real_escape_string($db, $_POST["leerling"]);
-if(password_verify($user_pass, $hash)) {
-if($id > 0){
-   $datum = date("Y-m-d");
-$mysql_qry = "select * from tblleerlingen where LeerlingID like $id;";
-$naam_qry =  "select Naam from tblleerlingen where LeerlingID like $id;";
-$resultnaam = mysqli_query($db,$naam_qry);
-if (mysqli_num_rows($resultnaam) > 0) {
-    while($row = mysqli_fetch_assoc($resultnaam)) {
-       $naam =$row['Naam'];
-    }
-}
-$result = mysqli_query($db ,$mysql_qry);
-if(mysqli_num_rows($result) > 0){
-    $sql = "DELETE FROM tbltelaat WHERE LeerlingID = $id;";
-    $db->query($sql);
-}
-if(date('l') == "Monday"){
-    $datumnaarbuiten = date('Y-m-d', strtotime('+4 days'));
-    $data = "$naam mag niet naar buiten tot $datumnaarbuiten";
-}
-elseif(date('l') == "Tuesday"){
-    $datumnaarbuiten = date('Y-m-d', strtotime('+5 days'));
-    $data = "$naam mag niet naar buiten tot $datumnaarbuiten";
-}
-elseif(date('l') == "Wednesday"){
-    $data = "$naam niet te laat gezet, het is woensdag";
-}
-elseif(date('l') == "Thursday"){
-    $datumnaarbuiten  = date('Y-m-d', strtotime('+5 days'));
-    $data = "$naam mag niet naar buiten tot $datumnaarbuiten";
-}
-elseif(date('l') == "Friday"){
-    $datumnaarbuiten = date('Y-m-d', strtotime('+5 days'));
-    $data = "$naam mag niet naar buiten tot $datumnaarbuiten";
-}
-elseif(date('l') == "Saturday"){
-    $data = "$naam niet te laat gezet, het is zaterdag";
-}
-elseif(date('l') == "Sunday"){
-    $data = "$naam niet te laat gezet, het is zondag";
-}
-$mysql_qry = "INSERT INTO tbltelaat (LeerlingID,Datum_te_laat,Datum_naar_buiten) VALUES ('$id','$datum','$datumnaarbuiten');";
-$db->query($mysql_qry);
-$db->close();
-}
-}
+
 ?>
 
 <html>
 <head>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="refreshform.js"></script>
+    <script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="ajax.js"></script>
 	<meta charset="utf-8">
 	<title>Smartpass</title>
 	 <meta name="theme-color" content="#ECEFF1" />
@@ -74,7 +27,15 @@ $db->close();
 <script defer src="getmdl-select/getmdl-select.min.js"></script>
 
 </head>
-
+<script>
+function SubmitFormData() {
+    var id = $("#leerling").val();
+    $.post("refreshform.php", { id:id},
+    function(data) {
+	 $('#myForm')[0].reset();
+    });
+}
+</script>
 <body scroll="no" style="overflow: hidden">
 	<div class="container">
 		<div class="login-box animated fadeInUp">
@@ -84,13 +45,14 @@ $db->close();
 <h1>Selecteer een klas <br></h1>
 
 <td style="text-align: center; height: 60px">
-<form action="" method = "POST">
+<form id="myForm" method="post">
 <?php
-include("connect.php");
+
 $mysql_queryklas = "select * from tblklassen;";
 $resultklas = mysqli_query($db,$mysql_queryklas);
 $rowklas = mysqli_fetch_array($resultklas,MYSQLI_ASSOC);
-echo '<select style="text-align:center;" id="klassen" name="klas">';
+echo '<select style="text-align:center;" id="klas" name="klas">';
+echo "<option value=''>Selecteer een klas</option>";
 do {
 echo '<option value="'.$rowklas['KlasNr']. '">'.$rowklas['Klas'].'</option>';
 }
@@ -98,38 +60,34 @@ while ($rowklas = $resultklas->fetch_assoc());
 echo '</select>';
 ?>
 
-<td style="text-align: center; height: 60px">
-    <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="button" name="submit" type="submit" value="Bevestig" />
- </form>
 <h1 style="text-align: center; height: 60px">Selecteer een leerling</h1>
-<form action="" method="POST"><?php
-include("connect.php");
-if($_SERVER["REQUEST_METHOD"] == "POST") {
-	
-	$klasnr = $_POST['klas'];
-	
-	$mysql_query1 = "SELECT Naam, LeerlingID FROM tblleerlingen WHERE Klas = '$klasnr'";
-	
-	$result = mysqli_query($db,$mysql_query1);
-    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-    $active = $row['Naam'];
-    echo '<select name="leerling">';
-	 do {
-   echo '<option value="'.$row['LeerlingID'].'">'.$row['Naam'].'</option>';
-}
-while ($row = $result->fetch_assoc());
-echo '</select>';
-}
-?>
-<td style="text-align: center; height: 60px"><input id="button"class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" name="submit" type="submit" value="Bevestig"/></form></td>
-<p style="text-align:center;"> <?php echo $data; ?> </p>
+
+<select name="leerling" id="leerling"><option>Selecteer eerst een klas <?php include("llnweer.php"); ?></option></select>
+<button id="submitFormData" onclick="SubmitFormData();" class="mdl-button mdl-js-button mdl-button--raised" type="button">Bevestig</button>
+</form>
+<div id="demo-toast-example" class="mdl-js-snackbar mdl-snackbar">
+  <div class="mdl-snackbar__text"></div>
+  <button class="mdl-snackbar__action" type="button"></button>
+</div>
+<script>
+(function() {
+  'use strict';
+  window['counter'] = 0;
+  var snackbarContainer = document.querySelector('#demo-toast-example');
+  var showToastButton = document.querySelector('#submitFormData');
+  showToastButton.addEventListener('click', function() {
+    'use strict';
+    var data = {message: "<?php echo $_SESSION['data'] ?>" };
+    snackbarContainer.MaterialSnackbar.showSnackbar(data);
+  });
+}());
+</script>
 <p style="text-align:center;"><a href = "logout.php">Log uit</a></p>
 <p style="text-align:center;"><a href = "leerlingen.php">Te late leerlingen bekijken</a></p>
-<p style="text-align:center;"><a href="leerlingenkaart.html"></a>Studentenkaart afdrukken</p>
 <p style="text-align:center;"><a href = "wachtwoord.php">Wachtwoord veranderen</a></p>
+<p style="text-align:center;"><a href = "kaart.php">Leerlingenkaart afdrukken</a></p>
 		</div>
 	</div>
-	
 </body>
 </html>
 

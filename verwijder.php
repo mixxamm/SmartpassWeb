@@ -1,6 +1,5 @@
 <?php
 include("connect.php");
-require "session.php";
 session_start();
 $user_name = $_SESSION['login_user'];
 $user_pass = $_SESSION['pass_user'];

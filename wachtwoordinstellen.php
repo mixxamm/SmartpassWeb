@@ -1,6 +1,5 @@
 <?php
 include ("connect.php");
-require "session.php";
 session_start();
 $user_name = $_SESSION['login_user'];
 if($_SERVER["REQUEST_METHOD"] == "POST") {
