@@ -1,6 +1,74 @@
 <?php
 include("connect.php");
 session_start();
+session_start();
+$user_name = $_SESSION['login_user'];
+$user_pass = $_SESSION['pass_user'];
+$mysql_query = "SELECT * FROM tblleerkrachten WHERE Naam like '$user_name';";
+      $result = mysqli_query($db,$mysql_query);
+      $row = mysqli_fetch_assoc($result);
+      $hash = $row['Wachtwoord'];
+      
+
+          
+
+
+if(password_verify($user_pass, $hash)) {
+    $id = mysqli_real_escape_string($db, $_POST['id']);
+    if($id > 0){
+        $mysql_qry_leerling = "SELECT * FROM tblleerlingen WHERE LeerlingID='$id';";
+    $resultnaam = mysqli_query($db, $mysql_qry_leerling);
+    $rowLeerling = mysqli_fetch_assoc($resultnaam);
+         $naam = $rowLeerling['Naam'];
+    }
+    
+    
+      
+    if(date('l') == "Monday"){
+    $datumnaarbuiten = date('Y-m-d', strtotime('+4 days'));
+    $data = "$naam mag niet naar buiten tot $datumnaarbuiten";
+}elseif(date('l') == "Tuesday"){
+    $datumnaarbuiten = date('Y-m-d', strtotime('+5 days'));
+    $data = "$naam mag niet naar buiten tot $datumnaarbuiten";
+}
+elseif(date('l') == "Wednesday"){
+    $data = "$naam niet te laat gezet, het is woensdag";
+}
+elseif(date('l') == "Thursday"){
+    $datumnaarbuiten  = date('Y-m-d', strtotime('+5 days'));
+    $data = "$naam mag niet naar buiten tot $datumnaarbuiten";
+}
+elseif(date('l') == "Friday"){
+    $datumnaarbuiten = date('Y-m-d', strtotime('+5 days'));
+    $data = "$naam mag niet naar buiten tot $datumnaarbuiten";
+}
+elseif(date('l') == "Saturday"){
+    $data = "$naam niet te laat gezet, het is zaterdag";
+}
+elseif(date('l') == "Sunday"){
+    $data = "$naam niet te laat gezet, het is zondag";
+}
+
+if($id > 0){
+   $datum = date("Y-m-d");
+$mysql_qry = "select * from tblleerlingen where LeerlingID like $id;";
+
+
+$result = mysqli_query($db ,$mysql_qry);
+if(mysqli_num_rows($result) > 0){
+    $sql = "DELETE FROM tbltelaat WHERE LeerlingID = $id;";
+    $db->query($sql);
+}
+
+
+$mysql_qry = "INSERT INTO tbltelaat (LeerlingID,Datum_te_laat,Datum_naar_buiten) VALUES ('$id','$datum','$datumnaarbuiten');";
+$db->query($mysql_qry);
+$db->close();
+}
+}
+else{
+    header('Location: https://colomaplus.smartpass.one');
+}
 
 ?>
 
@@ -30,10 +98,13 @@ session_start();
 <script>
 function SubmitFormData() {
     var id = $("#leerling").val();
-    $.post("refreshform.php", { id:id},
-    function(data) {
-	 $('#myForm')[0].reset();
-    });
+    $.ajax({
+  type: 'post',
+  data: { id:id },
+  success: function(response){
+     $('#myForm')[0].reset();
+  }
+});
 }
 </script>
 <body scroll="no" style="overflow: hidden">
@@ -69,6 +140,7 @@ echo '</select>';
   <div class="mdl-snackbar__text"></div>
   <button class="mdl-snackbar__action" type="button"></button>
 </div>
+
 <script>
 (function() {
   'use strict';
@@ -77,7 +149,7 @@ echo '</select>';
   var showToastButton = document.querySelector('#submitFormData');
   showToastButton.addEventListener('click', function() {
     'use strict';
-    var data = {message: "<?php echo $_SESSION['data'] ?>" };
+    var data = {message: "<?php echo $data; ?>" };
     snackbarContainer.MaterialSnackbar.showSnackbar(data);
   });
 }());
