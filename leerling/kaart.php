@@ -43,6 +43,8 @@ if (mysqli_num_rows($result) > 0) {
 ?>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    <meta http-equiv="refresh" content="60" >
     <meta name="theme-color" content="<?php echo $kleur ?>" />
     <meta name="apple-mobile-web-app-status-bar-style" content="<?php echo $kleur ?>">
 <title>Smartpass</title>
@@ -161,13 +163,13 @@ function checkTime(i) {
 })( jQuery );
 </script>
 <script type = "text/javascript" src = "src/qrcode.js"></script>
-<table class = "leerlingenkaarttabel" style="background-color: <?php echo $kleur ?>">
-    <tr><img width="600px" height="600px" src = '<?php echo $foto ?>'></tr>
-    <tr>
-        <p><?php echo $naam ?></p>
-    <p><?php echo $klas ?></p></tr>
-    <tr><div id="qrcode"></div></tr>
-  </table>
+
+    <img id="profielfoto" width="600px" height="600px" src = '<?php echo $foto ?>'>
+    
+        <p class="text"><?php echo $naam ?></p>
+    <p class="text"><?php echo $klas ?></p>
+    <div id="qrcode"></div>
+  
   
 <script>
 	jQuery('#qrcode').qrcode({width: 600,height: 600,text: '<?php echo $id ?>'});

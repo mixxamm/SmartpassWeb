@@ -1,11 +1,24 @@
-.leerlingenkaarttabel{
 
-    margin-left:auto;
-    margin-right:auto;
-}
 #klok{
     font-size:100px;
     margin-left:auto;
     margin-right:auto;
+    text-align:center;
+    font-family:calibri;
+    color:#607D8B;
+}
+#profielfoto{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+#qrcode{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width:34%;
+}
+.text{
+    font-size:50px;
     text-align:center;
 }
