@@ -43,7 +43,7 @@ if (mysqli_num_rows($result) > 0) {
 ?>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="refresh" content="60" >
     <meta name="theme-color" content="<?php echo $kleur ?>" />
     <meta name="apple-mobile-web-app-status-bar-style" content="<?php echo $kleur ?>">
@@ -70,7 +70,7 @@ function checkTime(i) {
 </head>
 <body onload="startTime()" style="background-color: <?php echo $kleur ?>">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
-<div id="klok"></div>
+
 <!--<script type="text/javascript" src="../jquery.qrcode.min.js"></script>
 --><script>(function( $ ){
 	$.fn.qrcode = function(options) {
@@ -166,13 +166,14 @@ function checkTime(i) {
 
     <img id="profielfoto" width="600px" height="600px" src = '<?php echo $foto ?>'>
     
-        <p class="text"><?php echo $naam ?></p>
-    <p class="text"><?php echo $klas ?></p>
+        <p class="text"><?php echo $naam ?> | <?php echo $klas ?></p>
+        <div id="klok"></div>
+    <p class="text"></p>
     <div id="qrcode"></div>
   
   
 <script>
-	jQuery('#qrcode').qrcode({width: 600,height: 600,text: '<?php echo $id ?>'});
+	jQuery('#qrcode').qrcode({width: 200,height: 200,text: '<?php echo $id ?>'});
 </script>  
 
 
