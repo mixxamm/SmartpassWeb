@@ -3,6 +3,7 @@
 include('../connect.php');
 session_start();
 $id = $_SESSION['leerlingid'];
+if(!empty($id)){
 $foto = 'https://smartpass.one/foto/'.$id.'.png';
 $mysql_qry = "select * from tblleerlingen where LeerlingID like $id;";
 $result = mysqli_query($db, $mysql_qry);
@@ -39,6 +40,9 @@ if (mysqli_num_rows($result) > 0) {
         $rowklas = mysqli_fetch_assoc($resultklas);
         $klas = $rowklas['Klas'];
     }
+}}
+else{
+    echo '<script>window.location.replace("https://colomaplus.smartpass.one/leerling");</script>';
 }
 ?>
 <html>
