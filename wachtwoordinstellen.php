@@ -17,7 +17,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         {
             $hash2 = password_hash($wachtwoord1, PASSWORD_DEFAULT);
             
-            $logintoken = random_str(64);
+            $logintoken = bin2hex(random_bytes(128));
              $mysql_qry = "update tblleerkrachten set Wachtwoord='$hash2', LoginToken='$logintoken' where Naam = '$user_name';";
     
                 if($db->query($mysql_qry) === TRUE){
@@ -37,14 +37,5 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
          $error = "Uw oud wachtwoord is fout.";
       }
     }
-    function random_str($length, $keyspace = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@!$%*#+-')
-{
-    $str = '';
-    $max = mb_strlen($keyspace, '8bit') - 1;
-    for ($i = 0; $i < $length; ++$i) {
-        $str .= $keyspace[random_int(0, $max)];
-    }
-    return $str;
-}
 
 ?>
