@@ -1,4 +1,15 @@
-<?php include ("login.php"); ?>
+<?php include ("login.php");
+echo $_COOKIE['logintoken'];
+$id = $_COOKIE['leerlingid'];
+$mysql_query = "SELECT * FROM tblleerlingen WHERE LeerlingID like $id;";
+$result = mysqli_query($db,$mysql_query);
+$row = mysqli_fetch_assoc($result);
+$logintoken = $row['LoginToken'];
+if($logintoken == $_COOKIE['logintoken']){
+    $_SESSION['leerlingid'] = $id;
+    echo '<script>window.location.replace("https://colomaplus.smartpass.one/leerling/kaart.php");</script>';
+}
+      ?>
 
 <!DOCTYPE html>
 <html>

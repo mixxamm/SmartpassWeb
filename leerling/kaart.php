@@ -41,6 +41,7 @@ if (mysqli_num_rows($result) > 0) {
         $klas = $rowklas['Klas'];
     }
 }}
+
 else{
     echo '<script>window.location.replace("https://colomaplus.smartpass.one/leerling");</script>';
 }

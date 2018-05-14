@@ -12,14 +12,20 @@
       $result = mysqli_query($db,$mysql_query);
       $row = mysqli_fetch_assoc($result);
       $hash = $row['Wachtwoord'];
+
 		
       if(password_verify($user_pass, $hash)) {
          $_SESSION['login_user'] = $user_name;
          $_SESSION['pass_user'] = $user_pass;
          $_SESSION['leerlingid'] = $row['LeerlingID'];
-         
+         setcookie('logintoken', $row['LoginToken']);
+         setcookie('leerlingid', $row['LeerlingID'], time() + 3600, "/");
          header("location: kaart.php");
-      }else {
+      }
+      elseif(!empty($_COOKIE['leerlingid'])){
+          header("location: kaart.php");
+      }
+      else {
          $error = "Uw gebruikersnaam of wachtwoord is fout.";
       }
    }
