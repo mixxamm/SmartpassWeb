@@ -52,6 +52,7 @@ else{
     <meta http-equiv="refresh" content="60" >
     <meta name="theme-color" content="<?php echo $kleur ?>" />
     <meta name="apple-mobile-web-app-status-bar-style" content="<?php echo $kleur ?>">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <title>Smartpass</title>
 <link rel="stylesheet" type="text/css" href="style.css">
 
@@ -175,7 +176,16 @@ function checkTime(i) {
         <div id="klok"></div>
     <p class="text"></p>
     <div id="qrcode"></div>
-  
+    <div id="navbar">
+    <i id="person" class="material-icons">
+person
+</i>
+  <i id="dashboard" class="material-icons">
+dashboard
+</i><i id="settings" class="material-icons">
+settings
+</i></div>
+
   
 <script>
 	jQuery('#qrcode').qrcode({width: 200,height: 200,text: '<?php echo $id ?>'});

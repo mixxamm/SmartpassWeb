@@ -28,3 +28,24 @@
     width:100%;
     height:2%;
 }
+#person
+{
+width:32%;
+font-size:70px;
+}
+#dashboard
+{
+width:32%;
+font-size:70px;
+}
+#settings
+{
+width:32%;
+font-size:70px;
+}
+#navbar{
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:20px;
+    width:100%;
+}
