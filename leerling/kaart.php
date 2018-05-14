@@ -180,9 +180,9 @@ function checkTime(i) {
     <i id="person" class="material-icons">
 person
 </i>
-  <i id="dashboard" class="material-icons">
+ <a href =  "dashboard.php"> <i id="dashboard" class="material-icons">
 dashboard
-</i><i id="settings" class="material-icons">
+</i></a><i id="settings" class="material-icons">
 settings
 </i></div>
 
