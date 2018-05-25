@@ -185,7 +185,11 @@ dashboard
 </i></a><i id="settings" class="material-icons">
 settings
 </i></div>
-
+<div class="Labels">
+<div> Profiel </div>
+<div> Dashboard </div>
+<div> Settings </div>
+</div>
   
 <script>
 	jQuery('#qrcode').qrcode({width: 200,height: 200,text: '<?php echo $id ?>'});
