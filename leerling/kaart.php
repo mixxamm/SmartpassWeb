@@ -176,20 +176,14 @@ function checkTime(i) {
         <div id="klok"></div>
     <p class="text"></p>
     <div id="qrcode"></div>
-    <div id="navbar">
-    <i id="person" class="material-icons">
-person
+    
+    <div id="navbarkaart">
 </i>
- <a href =  "dashboard.php"> <i id="dashboard" class="material-icons">
-dashboard
-</i></a><i id="settings" class="material-icons">
-settings
-</i></div>
-<div class="Labels">
-<div> Profiel </div>
-<div> Dashboard </div>
-<div> Settings </div>
+    <a href = "kaart.php"> <i id="person" class="material-icons">person</a></i>
+ <a href = "dashboard.php"> <i id="dashboard" class="material-icons">dashboard</a></i>
+<a href = "settings.php"> <i id="settings" class="material-icons">settings</a></i>
 </div>
+
   
 <script>
 	jQuery('#qrcode').qrcode({width: 200,height: 200,text: '<?php echo $id ?>'});

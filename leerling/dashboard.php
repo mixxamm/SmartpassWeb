@@ -38,11 +38,18 @@ else{
 ?>
 <html>
     <head>
-        
+         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <body>
         <p>U bent <?php echo $aantalTotaal ?> keer te laat</p>
         <p>Waarvan <?php echo $aantalTrimester ?> keer dit trimester</p>
         <p>Nog <?php echo $aantalTotNablijven ?> keer te laat tot nablijven</p>
+        
+            <div id="navbardashboard">
+</i>
+    <a href = "kaart.php"> <i id="person" class="material-icons">person</a></i>
+ <a href = "dashboard.php"> <i id="dashboard" class="material-icons">dashboard</a></i>
+<a href = "settings.php"> <i id="settings" class="material-icons">settings</a></i>
+</div>
     </body>
 </html>
