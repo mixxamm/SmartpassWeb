@@ -19,7 +19,7 @@ if (mysqli_num_rows($result) > 0) {
 ?>
 <html>
 <head>
-<title>Leelringenkaart</title>
+<title>Leerlingenkaart</title>
 <link rel="stylesheet" type="text/css" href="css/leerlingenkaartgen.css">
 </head>
 <body>
@@ -37,7 +37,7 @@ if (mysqli_num_rows($result) > 0) {
   </table>
   
 <script>
-	jQuery('#qrcode').qrcode({width: 120,height: 120,text: '<?php echo $id ?>'});
+	jQuery('#qrcode').qrcode({width: 120,height: 120,text: '<?php echo $id . ",4" ?>'});
 </script>  
 
 
