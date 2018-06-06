@@ -169,24 +169,24 @@ function checkTime(i) {
 })( jQuery );
 </script>
 <script type = "text/javascript" src = "src/qrcode.js"></script>
-
-    <img id="profielfoto" width="600px" height="600px" src = '<?php echo $foto ?>'>
+<div class="container">
+    <img id="profielfoto" src = '<?php echo $foto ?>'>
     
         <p class="text"><?php echo $naam ?> | <?php echo $klas ?></p>
         <div id="klok"></div>
     <p class="text"></p>
     <div id="qrcode"></div>
     
-    <div id="navbarkaart">
-</i>
-    <a href = "kaart.php"> <i id="person" class="material-icons">person</a></i>
- <a href = "dashboard.php"> <i id="dashboard" class="material-icons">dashboard</a></i>
-<a href = "settings.php"> <i id="settings" class="material-icons">settings</a></i>
-</div>
+    <div id="navbar">
 
+    <a class="navactief" href = "kaart.php"> <i id="person" class="material-icons">person</a></i>
+ <a class="navinactief" href = "dashboard.php"> <i id="dashboard" class="material-icons">dashboard</a></i>
+<a class = "navinactief" href = "settings.php"> <i id="settings" class="material-icons">settings</a></i>
+</div>
+</div>
   
 <script>
-	jQuery('#qrcode').qrcode({width: 200,height: 200,text: '<?php echo $id ?>'});
+	jQuery('#qrcode').qrcode({width: 150,height: 150,text: '<?php echo $id . "," . $Buiten ?>'});
 </script>  
 
 

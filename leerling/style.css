@@ -14,12 +14,12 @@
     margin-left: auto;
     margin-right: auto;
     width:auto;
-    height:16%;
+    height:25%;
     border-radius: 50%;
 }
 #qrcode{
     margin: 0 auto;
-     width: 200px; 
+     width: 150px; 
 }
 .text{
     font-size:32px;
@@ -44,27 +44,45 @@ font-size:70px;
 width:32%;
 font-size:70px;
 }
-#navbarkaart{
-    margin-left:auto;
-    margin-right:auto;
-    margin-top:20px;
-    width:70%;
+#navbar{
+    margin: 0 auto;
     height:10%;
+    position:fixed;
+    width:100%;
+    padding:5px;
+    bottom:10px
     
 }
-#navbardashboard{
-    margin-left:auto;
+
+.navactief{
+     margin-left:auto;
     margin-right:auto;
     margin-bottom: auto;
-    margin-top:20px;
-    width:70%;
-    height:10%;
-    
+    color: #455A64;
 }
-.textdashboard{
-    font-size:32px;
-    font-family:calibri;
-    text-align:center;
-    width:100%;
-    height:2%;
+.navinactief{
+     margin-left:auto;
+    margin-right:auto;
+    margin-bottom: auto;
+    color: #757575;
+}
+.container{
+    height: 100%;
+}
+.dashboardtext{
+    text-align: center;
+    font-size: 200%;
+}
+#person{
+    height: auto;
+    width: 31%;
+    margin-left: 2%;
+}
+#dashboard{
+    height: auto;
+    width: 31%;
+}
+#settings{
+    height: auto;
+    width: 31%;
 }
