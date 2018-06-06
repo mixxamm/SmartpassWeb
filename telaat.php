@@ -1,7 +1,6 @@
 <?php
 include("connect.php");
 session_start();
-session_start();
 $user_name = $_SESSION['login_user'];
 $user_pass = $_SESSION['pass_user'];
 $mysql_query = "SELECT * FROM tblleerkrachten WHERE Naam like '$user_name';";
