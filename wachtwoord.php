@@ -3,6 +3,7 @@ include("connect.php");
 include ("wachtwoordinstellen.php");
 session_start();
 $user_name = $_SESSION['login_user'];
+if(isset($user_name)){
 ?>
 
 <html>
@@ -37,3 +38,4 @@ $user_name = $_SESSION['login_user'];
 			<a href="gototelaat.php" id="goback" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Ga terug</a>
     </body>
 </html>
+<?php } ?>
