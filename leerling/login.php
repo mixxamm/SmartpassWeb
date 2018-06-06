@@ -15,6 +15,7 @@
 
 		
       if(password_verify($user_pass, $hash)) {
+         $_SESSION['tabel'] = "tblleerlingen";
          $_SESSION['login_user'] = $user_name;
          $_SESSION['pass_user'] = $user_pass;
          $_SESSION['leerlingid'] = $row['LeerlingID'];
