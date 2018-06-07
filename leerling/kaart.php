@@ -186,7 +186,7 @@ function checkTime(i) {
 </div>
   
 <script>
-	jQuery('#qrcode').qrcode({width: 150,height: 150,text: '<?php echo $id . "," . $Buiten ?>'});
+	jQuery('#qrcode').qrcode({width: 100,height: 100,text: '<?php echo $id . "," . $Buiten ?>'});
 </script>  
 
 
