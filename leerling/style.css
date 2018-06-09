@@ -73,6 +73,16 @@ font-size:70px;
     text-align: center;
     font-size: 200%;
 }
+.dashboardnablijven{
+    text-align: center;
+    font-size: 150%;
+}
+.instellingentekst{
+    text-align: center;
+    font-size: 200%;
+    text-decoration: none;
+    color: black
+    ;
 #person{
     height: auto;
     width: 31%;

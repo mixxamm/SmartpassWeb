@@ -3,11 +3,20 @@ include("connect.php");
 include ("wachtwoordinstellen.php");
 session_start();
 $user_name = $_SESSION['login_user'];
+$tabel = $_SESSION['tabel'];
+if($tabel == "tblleerlingen"){
+    $terug = "leerling/settings.php";
+}
+elseif($tabel == "tblleerkrachten"){
+    $terug = "gototelaat.php";
+}
 if(isset($user_name)){
 ?>
 
 <html>
     <head>
+        <meta name="theme-color" content="#ECEFF1" />
+        <meta name="viewport" content="width=device-width, initial-scale=0.8">
         	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-pink.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<link rel="stylesheet" href="css/style.css">
@@ -35,7 +44,7 @@ if(isset($user_name)){
 			<p><?php echo $error, $gelukt, $nietgelukt, $passnm; ?></p>
 			</form>
 			</div>
-			<a href="gototelaat.php" id="goback" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Ga terug</a>
+			<a href="<?php echo $terug ?>" id="goback" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Ga terug</a>
     </body>
 </html>
 <?php } ?>

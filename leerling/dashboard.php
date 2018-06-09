@@ -23,7 +23,7 @@ $result = mysqli_query($db, $mysql_nablijven);
 $row = mysqli_fetch_assoc($result);
 $datum = $row['DatumNablijven'];
 $datum1 = date("Y-m-d");
-if($datum != "" && $datum >= $datum1){
+if($datum != "" && $datum <= $datum1){
     if($datum == $datum1){
         $datum = "U moet op ".$datum." (vandaag) nablijven in lokaal D112.";
     }
@@ -49,6 +49,9 @@ else{
         <p class="dashboardtext">U bent <?php echo $aantalTotaal ?> keer te laat</p>
         <p class="dashboardtext">Waarvan <?php echo $aantalTrimester ?> keer dit trimester</p>
         <p class="dashboardtext">Nog <?php echo $aantalTotNablijven ?> keer te laat tot nablijven</p>
+        <h1 class = "dashboardtext">Nablijven</h1>
+        <p class="dashboardnablijven"> <?php echo $datum ?></p>
+        
         
             <div id="navbar">
 
