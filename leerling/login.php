@@ -20,7 +20,7 @@
          $_SESSION['pass_user'] = $user_pass;
          $_SESSION['leerlingid'] = $row['LeerlingID'];
          setcookie('logintoken', $row['LoginToken']);
-         setcookie('leerlingid', $row['LeerlingID'], time() + 3600, "/");
+         setcookie('leerlingid', $row['LeerlingID'], time() + 3600 * 24 * 90, "/");
          header("location: kaart.php");
       }
       elseif(!empty($_COOKIE['leerlingid'])){
