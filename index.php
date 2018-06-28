@@ -32,7 +32,6 @@
 			
 			<div><?php echo $error; ?></div>
 			<a href="leerling"><h4>Login als leerling</h4></a>
-			<a href="#"><p class="small">Wachtwoord vergeten?</p></a>
 		</div>
 </body>
 </html>

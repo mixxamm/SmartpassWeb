@@ -39,7 +39,6 @@ if(isset($_COOKIE['logintoken']) && $logintoken == $_COOKIE['logintoken']){
 			
 			<div><?php echo $error; ?></div>
 			<a href="../"><h4>Login als leerkracht</h4></a>
-			<a href="#"><p class="small">Wachtwoord vergeten?</p></a>
 		</div>
 </body>
 </html>
